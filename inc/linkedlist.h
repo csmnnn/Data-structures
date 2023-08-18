@@ -1,21 +1,27 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-typedef struct _NODE {
+typedef struct _NODE Node;
+
+struct _NODE {
     int data;
     Node* nextNode;
-} Node;
+};
 
-Node linkedList();
+Node* createNode();
 
-void insertNode(Node* head, Node* elemToInsert);
+Node* createList(int noElements);
 
-void insertNodeInterior(Node* head, Node* elemToInsert, int position);
+Node* insert(Node* head, Node* elemToInsert);
+
+void insertAtIdx(Node* head, int value, int idx);
 
 void deleteNode();
 
 void deleteNodeInterior();
 
 int size(Node* node);
+
+void freeList(Node* head);
 
 #endif
