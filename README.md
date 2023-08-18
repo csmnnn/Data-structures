@@ -1,12 +1,14 @@
 # Data structures
 
 In this repository I've implemented basic data structures in C:
-* Linked list: singly, doubly (linear and circular)
-* Stack
-* Queue
-* Hash map
-* Binary trees
-* Graph
+* Linked list: singly, doubly (linear and circular) - in progress
+* Stack - TBI
+* Queue - TBI
+* Hash map - TBI
+* Binary trees - TBI
+* Graph - TBI
+
+Note: TBI = To Be Implemented
 
 ## Purpose
 
