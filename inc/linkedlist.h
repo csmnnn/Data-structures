@@ -28,10 +28,10 @@ Node* createList(int noElements);
 
 /**
  * @brief Deletes the head of the list
- * @param head pointer to the head of the list
+ * @param head Pointer that points to the head of the list
  * @return Void
 */
-void delete(Node* head);
+void delete(Node** head);
 
 /**
  * @brief Deletes an element specified by index
