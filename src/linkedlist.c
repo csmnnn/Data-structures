@@ -10,6 +10,10 @@
 
 Node* createNode() {
     Node* node = (Node*)malloc(sizeof(Node));
+    if (!node) {
+        puts("Error");
+        exit(EXIT_FAILURE);
+    }
 
     printf("Node data: ");
     scanf("%d", &node->data);
@@ -23,8 +27,8 @@ Node* createList(int noElements) {
     if (noElements < 1)
         return NULL;
     
-    Node* head = createNode(), *elemToInsert;
-    int i, value;
+    Node* head = createNode();
+    int i;
     for (i = 1; i < noElements; i++) 
         head = insert(head, createNode());
 
@@ -66,9 +70,9 @@ int size(Node* head) {
     return size;
 }
 
-void delete(Node* head) {
-    Node* oldHead = head;
-    head = head->nextNode;
+void delete(Node** head) {
+    Node* oldHead = *head;
+    *head = (*head)->nextNode;
     free(oldHead);
     oldHead = 0;
 }
@@ -78,7 +82,7 @@ void deleteAtIdx(Node* head, int idx) {
         return;
     
     if (size(head) == 1)
-        delete(head);
+        delete(&head);
     else {
         int i = 0;
         Node* tmp = head, *nodeToDelete;
@@ -93,6 +97,10 @@ void deleteAtIdx(Node* head, int idx) {
 }
 
 void freeList(Node* head) {
+    do {
+        delete(&head);
+    }
+    while (head->nextNode != 0);
     free(head);
     head = 0;
 }
@@ -101,10 +109,13 @@ void print(Node* head) {
     Node* tmp = head;
     printf("[");
     while (tmp != 0) {
-        if (!tmp->nextNode)
+        if (!tmp->nextNode) {
             printf("%d]\n", tmp->data);
-        else
+            break;
+        }
+        else {
             printf("%d, ", tmp->data);
             tmp = tmp->nextNode;
+        }
     }
 }
