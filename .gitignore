@@ -1,0 +1,16 @@
+# Folders
+/.vscode
+/.git
+
+# Object files
+*.o
+
+# Assembly files
+*.s
+
+# Executables
+*.exe
+*.out
+
+# main.c
+main.c
